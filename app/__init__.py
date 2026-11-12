@@ -1,11 +1,11 @@
+from datetime import timedelta
+
 from flask import Flask
 from flask_login import LoginManager, current_user
-from flask_socketio import SocketIO, join_room, emit
+from flask_socketio import SocketIO, emit, join_room
 from flask_sqlalchemy import SQLAlchemy
 
 from config import Config
-
-from datetime import timedelta
 
 db = SQLAlchemy()
 login_manager = LoginManager()
