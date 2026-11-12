@@ -8,9 +8,9 @@ class Config:
     _db_url = os.environ.get("DATABASE_URL", "sqlite:///" + os.path.join(basedir, "chataap.db"))
     # Render fix - psycopg2 driver use karo
     if _db_url.startswith("postgres://"):
-        _db_url = _db_url.replace("postgres://", "postgresql+psycopg2://", 1)
-    elif _db_url.startswith("postgresql://"):
-        _db_url = _db_url.replace("postgresql://", "postgresql+psycopg2://", 1)
+        _db_url = _db_url.replace("postgres://", "postgresql+psycopg://", 1)
+    elif _db_url.startswith("postgresql+psycopg://"):
+        _db_url = _db_url.replace("postgresql+psycopg://", "postgresql+psycopg://", 1)
     
     SQLALCHEMY_DATABASE_URI = _db_url
     SQLALCHEMY_TRACK_MODIFICATIONS = False
