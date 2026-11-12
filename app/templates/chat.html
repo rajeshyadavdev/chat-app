@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block title %}Chat - Chat App{% endblock %}
+{% block content %}
+<div id="user-data" data-my-id="{{ current_user.id }}" hidden></div>
+<div class="row">
+    <!-- Left Side - Users List -->
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header bg-primary text-white">Online Users</div>
+            <div class="list-group list-group-flush" id="user-list">
+                {% for user in users %}
+                <button class="user-item" data-user-id="{{ user.id }}" data-username="{{ user.username }}">
+                    <span class="status-dot" id="dot-{{ user.id }}"
+                        style="width:10px; height:10px; border-radius:50%; background:grey; display:inline-block;"></span>
+                    {{ user.username }}
+                </button>
+                {% else %}
+                <div class="list-group-item">Koi aur user nahi hai abhi. Dusra account bana ke dekh!</div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Right Side - Chat Box -->
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header" id="chat-header">Kisi ko select kar chat karne ke liye</div>
+            <div class="card-body" id="chat-messages" style="height: 400px; overflow-y: auto; background: #f8f9fa;">
+                <p class="text-muted text-center mt-5">👈 Left se kisi user pe click kar</p>
+            </div>
+            <!-- TYPING WALI LINE YAHAN ADD KI -->
+            <div id="typing-indicator" class="px-3 py-1 text-muted" style="font-size: 13px; min-height: 20px;"></div>
+            <div class="card-footer">
+                <div class="input-group">
+                    <input type="text" id="message-input" class="form-control" placeholder="Message likh..." disabled>
+                    <button class="btn btn-primary" id="send-btn" disabled>Send ➤</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+{% endblock %}
