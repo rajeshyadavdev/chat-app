@@ -19,6 +19,7 @@ itsdangerous==2.2.0
 Jinja2==3.1.6
 Mako==1.4.3
 MarkupSafe==3.0.4
+packaging==26.3
 python-dotenv==1.0.0
 python-engineio==4.15.1
 python-socketio==5.18.1
